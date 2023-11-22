@@ -1,0 +1,45 @@
+wealth0 <- 100
+
+timesteps <- set_timesteps(by = "year", n = 10)
+
+expense <- set_expense(expense0 = 20)
+
+income <- set_income(income0 = 10)
+
+investment <- list(set_investment(name = "investment1",
+               timesteps = timesteps,
+               exp_pret = 0, exp_psd = 0, exp_dret = 0.02, exp_dsd = 0,
+               from = 1, to = length(timesteps$timestep),
+               percentage = 0.2, amount = 40),
+     set_investment(name = NULL,
+                    timesteps = timesteps,
+                    exp_pret = 0, exp_psd = 0, exp_dret = 0, exp_dsd = 0,
+                    from = 1, to = length(timesteps$timestep),
+                    percentage = 0.6, amount = 70))
+
+cash <- set_cash(timesteps = timesteps, amount = 50)
+
+out <- simulate_wealth(timesteps = timesteps,
+                       wealth0 = 120,
+                       expense = expense,
+                       income = income,
+                       cash = cash,
+                       investment = investment)
+
+out |> 
+  as.data.frame() |> 
+  as_tibble() |> 
+  clipr::write_clip()
+
+x <- list(list(amount = 1,
+               percentage = 1),
+          list(amount = 0.2,
+               percentage = NULL))
+
+amounts <- sapply(x, function(item) item$amount)
+
+
+w <- 100
+sapply(investment, function(item) max(item$amount, item$percentage*w))
+
+expense <- set_expense(timesteps = timesteps, expense0 = 20)
