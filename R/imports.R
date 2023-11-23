@@ -1,8 +1,7 @@
-#' Imports and Function Directives for forextrades
+#' Imports and Function Directives for wealthplanning
 #'
 #' @name imports
 #' @import tidyverse
 #' @import lubridate
-#' @import MASS
 #' @keywords internal
 NULL
