@@ -173,7 +173,7 @@ calculate_tax <- function(x, tax) {
 #' @param income
 #' @param cash
 #' @param correlations
-#' @param investments
+#' @param investment
 #' @param incometax
 #' @param wealthtax
 #'
@@ -181,7 +181,7 @@ calculate_tax <- function(x, tax) {
 #' @export
 simulate_wealth <- function(timesteps, wealth0, expense, income,
                             cash, correlations = NULL,
-                            investments, incometax, wealthtax) {
+                            investment, incometax, wealthtax) {
   wealth0_out <- c(); wealth0_out[1] <- wealth0
   cash0_out <- c(); cash0_out[1] <- max(wealth0*cash$percentage, min(cash$amount, wealth0), 0)
   cash_target <- cash0_out

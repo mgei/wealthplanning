@@ -1,7 +1,0 @@
-
-investment0_out <- matrix(c(1,2,1,2,1,2,1,2), byrow = T, ncol = 2)
-d_rets <- matrix(rnorm(n = 8, sd = 0.1), ncol = 2)
-
-for (i in 1:4) {
-  capincome_out[i] <- sum(investment0_out[i,] * d_rets[i,])
-}
